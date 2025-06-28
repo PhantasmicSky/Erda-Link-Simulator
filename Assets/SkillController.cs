@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SkillController : MonoBehaviour
 {
-    private Dictionary<string, RunestoneFunctionality> skills = new Dictionary<string, RunestoneFunctionality> { };
+    public Dictionary<string, RunestoneFunctionality> skills = new Dictionary<string, RunestoneFunctionality> { };
     public TextAsset skillInformationJSON;
     public Dictionary<string, SkillInfo> skillInformation;
     private List<string> checkOrder = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs15", "rs16", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs215", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs415", "rs416", "rs417", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs615", "rs616", "rs1000", "rs1001", "rs1002", "rs1003", "rs1004", "rs1005" };
@@ -17,6 +17,7 @@ public class SkillController : MonoBehaviour
     [SerializeField] List<Sprite> stoneTypeImg;
     private int runningTotalSE = 0;
     private int runningTotalSEF = 0;
+    [SerializeField] PathController pc;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()
@@ -108,6 +109,7 @@ public class SkillController : MonoBehaviour
             }
             lockFlag = false;
         }
+        pc.pathCheck();
     }
     public void lockCheckOld()
     {

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      stoneBoard.lightModule.body.0._outlink_0: -2389810024480940249
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
