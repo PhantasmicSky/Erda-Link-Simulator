@@ -64,7 +64,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         {
             skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[0];
         }
-        if(locId > 1000)
+        if (locId > 1000)
         {
             setLock(true);
             skillLevel.SetActive(false);
@@ -167,10 +167,10 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
                 }
             }
         }
-            else
-            {
-                lockObject.SetActive(false);
-            }
+        else
+        {
+            lockObject.SetActive(false);
+        }
     }
 
     public void changeSkillLevel(int number, bool treatAsDelta = true, bool lockCheck = true)
@@ -192,7 +192,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         }
         else if (number < 0 && treatAsDelta && nodeType == 5)
         {
-            if(currLevel > 1)
+            if (currLevel > 1)
             {
                 currLevel--;
             }
@@ -244,7 +244,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         }
         else
         {
-            return new List<int> {};
+            return new List<int> { };
         }
     }
 
@@ -256,7 +256,12 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         }
         else
         {
-            return new List<int> {};
+            return new List<int> { };
         }
+    }
+
+    public int getSkillId()
+    {
+        return skillId;
     }
 }
