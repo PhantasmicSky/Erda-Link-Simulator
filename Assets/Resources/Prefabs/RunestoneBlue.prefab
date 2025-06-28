@@ -53,6 +53,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3861802295499007118, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: maxLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861802295499007118, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: nodeType
       value: 1
       objectReference: {fileID: 0}
