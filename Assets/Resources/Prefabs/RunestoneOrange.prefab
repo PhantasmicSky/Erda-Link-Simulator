@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3861802295499007118, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: maxLevel
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3861802295499007118, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: nodeType
@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8675155584479642073, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7508015857693010899, guid: 8740368a5260d7d42ac31df8b5b25aa3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RunestoneGreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8675155584479642073, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8540408548827885374, guid: 2316a0ef84ff9c24d8bc283294e51f76, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

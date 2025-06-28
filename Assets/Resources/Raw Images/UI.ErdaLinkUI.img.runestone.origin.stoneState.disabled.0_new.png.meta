@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6fc0bab7c7f4da842b3f0f60f3a76bea
+guid: 85f3becde5d530c488c1306fd59d29e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2066890234198828111
-    second: mainBackgrnd.backgrnd_0
+      213: 3916789354472224915
+    second: UI.ErdaLinkUI.img.runestone.origin.stoneState.disabled.0_new_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mainBackgrnd.backgrnd_0
+      name: UI.ErdaLinkUI.img.runestone.origin.stoneState.disabled.0_new_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 862
-        height: 624
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 42
+        height: 42
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1bbdad8684ee053e0800000000000000
-      internalID: -2066890234198828111
+      spriteID: 39839557a2b3b5630800000000000000
+      internalID: 3916789354472224915
       vertices: []
       indices: 
       edges: []
@@ -151,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9d93e327136783b48820c60aaa1d1a12
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mainBackgrnd.backgrnd_0: -2066890234198828111
+      UI.ErdaLinkUI.img.runestone.origin.stoneState.disabled.0_new_0: 3916789354472224915
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
