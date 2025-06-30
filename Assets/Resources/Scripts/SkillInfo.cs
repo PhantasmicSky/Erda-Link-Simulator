@@ -12,4 +12,7 @@ public class SkillInfo
     public List<int> numberChange1;
     public List<int> numberChange2;
     public int nodeType;
+    public string effectStr;
+    public int effectValue;
+    public bool isPercent;
 }

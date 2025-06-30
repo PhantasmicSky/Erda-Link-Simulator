@@ -49,6 +49,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3861802295499007118, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: locked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861802295499007118, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: skillId
       value: 4
       objectReference: {fileID: 0}
@@ -58,6 +62,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3861802295499007118, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: nodeType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861802295499007118, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: lightLevel.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6200683691955393451, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}

@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: nodeType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3861802295499007118, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: lightLevel.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5427849562682336608, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: -1372609852596824337, guid: 38ee9e69f4451fc49b7a6021301d9053, type: 3}
     - target: {fileID: 6200683691955393451, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6768843894987923975, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: m_Name

@@ -26,6 +26,8 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     [SerializeField] private bool nodeActive;
     [SerializeField] private SkillController controller;
     [SerializeField] private GameObject highlight;
+    [SerializeField] private List<int> lightLevel = new List<int> { 0, 0, 0, 0 }; //clockwise starting from top i.e. Top Right Bottom Left
+    [SerializeField] private List<int> lightLevelRequirement = new List<int> { 0, 0, 0, 0 }; //clockwise starting from top i.e. Top Right Bottom Left
     const float skillLocationX = 0.16f;
     const float skillLocationY = -0.23f;
 
@@ -176,28 +178,31 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     public void changeSkillLevel(int number, bool treatAsDelta = true, bool lockCheck = true)
     {
         //Update the variable
-        if (number > 0 && treatAsDelta)
+        if (treatAsDelta)
         {
-            if (currLevel < maxLevel)
+            if (number > 0)
             {
-                currLevel++;
+                if (currLevel < maxLevel)
+                {
+                    currLevel++;
+                }
+            }
+            else if (number < 0 && nodeType != 5)
+            {
+                if (currLevel > 0)
+                {
+                    currLevel--;
+                }
+            }
+            else if (number < 0 && nodeType == 5)
+            {
+                if (currLevel > 1)
+                {
+                    currLevel--;
+                }
             }
         }
-        else if (number < 0 && treatAsDelta && nodeType != 5)
-        {
-            if (currLevel > 0)
-            {
-                currLevel--;
-            }
-        }
-        else if (number < 0 && treatAsDelta && nodeType == 5)
-        {
-            if (currLevel > 1)
-            {
-                currLevel--;
-            }
-        }
-        else if (!treatAsDelta)
+        else
         {
             currLevel = number;
         }
@@ -215,12 +220,9 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         {
             skillLevel.GetComponent<TextMeshPro>().text = formatVisualLevel(currLevel);
         }
-        if (lockCheck)
-        {
-            controller.lockCheck();
-        }
-
-
+        controller.lockCheck(); //LOCK CHECK HERE
+        controller.computeLight();
+        controller.lightCheck();
     }
 
     public void setAsActive(bool active)
@@ -263,5 +265,15 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     public int getSkillId()
     {
         return skillId;
+    }
+
+    public List<int> getLightLevel()
+    {
+        return lightLevel;
+    }
+
+    public List<int> getLightCondition()
+    {
+        return lightLevelRequirement;
     }
 }

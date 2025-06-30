@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 23443cf246588fc42981d112e3c82b55
+guid: 7b78768a27f157741bf58a8747cb8fde
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7778302958366626780
-    second: Etc.ErdaLink.img.tree.182.right.204.201_new_0
+      213: -6518300141334161692
+    second: erdaLinkSkill.infownd.scroll.enabled.thumb0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,13 +46,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 1, y: 3, z: 1, w: 3}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -97,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Etc.ErdaLink.img.tree.182.right.204.201_new_0
+      name: erdaLinkSkill.infownd.scroll.enabled.thumb0_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 119
-        height: 182
+        width: 5
+        height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42cef2babaaed0490800000000000000
-      internalID: -7778302958366626780
+      spriteID: 4e616609e885a85a0800000000000000
+      internalID: -6518300141334161692
       vertices: []
       indices: 
       edges: []
@@ -151,8 +151,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Etc.ErdaLink.img.tree.182.right.204.201_new_0: -7778302958366626780
+      erdaLinkSkill.infownd.scroll.enabled.thumb0_0: -6518300141334161692
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
