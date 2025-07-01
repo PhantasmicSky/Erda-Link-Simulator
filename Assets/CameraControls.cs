@@ -61,4 +61,10 @@ public class CameraControls : MonoBehaviour
         Debug.Log(ctx.ReadValue<float>());
     }
 
+    public void resetCamPos()
+    {
+        transform.position = new Vector3(9.5f, -5.75f, -10.0f);
+        //_mainCamera.orthographicSize = 5.1f;
+    }
+
 }

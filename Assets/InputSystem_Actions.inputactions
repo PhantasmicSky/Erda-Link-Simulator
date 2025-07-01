@@ -516,7 +516,7 @@
                 {
                     "name": "",
                     "id": "352d5345-07a5-45a2-ad43-bc2119b51e3d",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

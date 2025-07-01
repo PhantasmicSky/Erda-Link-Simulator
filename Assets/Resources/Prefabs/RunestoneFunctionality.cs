@@ -28,6 +28,8 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     [SerializeField] private GameObject highlight;
     [SerializeField] private List<int> lightLevel = new List<int> { 0, 0, 0, 0 }; //clockwise starting from top i.e. Top Right Bottom Left
     [SerializeField] private List<int> lightLevelRequirement = new List<int> { 0, 0, 0, 0 }; //clockwise starting from top i.e. Top Right Bottom Left
+    [SerializeField] private TextMeshPro tooltipText;
+    [SerializeField] private RectTransform tooltipBG;
     const float skillLocationX = 0.16f;
     const float skillLocationY = -0.23f;
 
@@ -97,6 +99,30 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         {
             skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[1];
         }
+
+        //Show Tooltip
+        if (controller.showTooltip)
+        {
+            if (nodeType != 3 && nodeType != 4 && nodeType != 5 && skillId != 300 && skillId != 304)
+            {
+                tooltipText.text = controller.skillInformation[$"rid{skillId}"].skillDescription;
+            }
+            else
+            {
+                tooltipText.text = controller.skillInformation[$"rid{skillId}"].skillName;
+            }
+            if (nodeType != 5)
+            {
+                tooltipText.GetComponent<RectTransform>().localPosition = new Vector3(0.32f, 0.1f, 0);
+            }
+            else
+            {
+                tooltipText.GetComponent<RectTransform>().localPosition = new Vector3(0.21f, -0.512f, 0);
+            }
+            tooltipText.enabled = true;
+            tooltipBG.gameObject.SetActive(true);
+            tooltipBG.localScale = new Vector3(tooltipText.preferredWidth, 0.16f, 1);
+        }
         //Debug.Log($"Hovering over {skillId} at location {locId}");
         //throw new System.NotImplementedException();
     }
@@ -107,6 +133,12 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         {
             skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[0];
         }
+
+        if (controller.showTooltip)
+        {
+            tooltipText.enabled = false;
+            tooltipBG.gameObject.SetActive(false);
+        }
         //Debug.Log($"Left {skillId} at location {locId}");
         //throw new System.NotImplementedException();
     }
@@ -115,6 +147,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
+            controller.populateInformation(skillId, currLevel, imageStates[0]);
             if (!nodeActive)
             {
                 controller.setAsActive(true, locId);
@@ -131,7 +164,6 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
                 changeSkillLevel(-1);
             }
         }
-        controller.populateInformation(skillId, currLevel, imageStates[0]);
         //Debug.Log(eventData.button);
         //Debug.Log(eventData);
         //throw new System.NotImplementedException();

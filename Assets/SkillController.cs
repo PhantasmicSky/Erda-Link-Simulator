@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
@@ -26,8 +27,13 @@ public class SkillController : MonoBehaviour
     const float slope = 2.0f;
     const float baseSize = 3.18f;
     const float b = 19.82f;
+    //const float test = 18.88f;
     [SerializeField] private GameObject lightBoard;
     [SerializeField] private TextMeshProUGUI summary;
+    [SerializeField] private TextMeshProUGUI stoneTypeTextOut;
+    [SerializeField] private List<string> stoneTypeTxt = new List<string> {"Rush Stone", "Rush Stone (End)", "Boost Stone", "Skill Stone", "Ultimate Stone", "Origin Stone"};
+    [SerializeField] private List<string> stoneTypeCC = new List<string> { "#339944", "#1166CC", "#DD2133", "#EE8822", "#C52197", "#9D46CC" };
+    public bool showTooltip = true;
     private Dictionary<string, string> statName = new Dictionary<string, string>
     {
         { "int","INT" },
@@ -461,7 +467,8 @@ public class SkillController : MonoBehaviour
             uiSEFCost.text = "--";
         }
         skillIcon.sprite = sIcon;
-        stoneType.sprite = stoneTypeImg[skillInformation[$"rid{skillId}"].nodeType];
+        //stoneType.sprite = stoneTypeImg[skillInformation[$"rid{skillId}"].nodeType];
+        stoneTypeTextOut.text = $"<color={stoneTypeCC[skillInformation[$"rid{skillId}"].nodeType]}>{stoneTypeTxt[skillInformation[$"rid{skillId}"].nodeType]}</color>";
         computeTotalSpent();
         uiTotSE.text = $"{runningTotalSE}";
         uiTotSEF.text = $"{runningTotalSEF}";
@@ -548,7 +555,7 @@ public class SkillController : MonoBehaviour
                     }
                 }
             }
-            else if (header.Key == "fom" && header.Key == "fdt")
+            else if (header.Key == "fom" || header.Key == "fdt")
             {
                 if (statNumber[header.Key] > 0)
                 {
@@ -564,6 +571,11 @@ public class SkillController : MonoBehaviour
             }
             summary.text = finale;
         }
+    }
+
+    public void toggleTooltip(bool state)
+    {
+        showTooltip = state;
     }
 
 }

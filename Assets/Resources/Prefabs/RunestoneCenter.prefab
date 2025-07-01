@@ -20,6 +20,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1804507271040873199, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804507271040873199, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804507271040873199, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804507271040873199, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.512
+      objectReference: {fileID: 0}
     - target: {fileID: 1945992579451520915, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: m_Radius
       value: 0.21
@@ -124,6 +140,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 3916789354472224915, guid: 85f3becde5d530c488c1306fd59d29e5, type: 3}
+    - target: {fileID: 6221179412389521542, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221179412389521542, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.512
+      objectReference: {fileID: 0}
     - target: {fileID: 6768843894987923975, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: m_Name
       value: RunestoneCenter
