@@ -32,6 +32,9 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     [SerializeField] private RectTransform tooltipBG;
     const float skillLocationX = 0.16f;
     const float skillLocationY = -0.23f;
+    [SerializeField] private bool calcInclude;
+    [SerializeField] private List<int> calcRange = new List<int> { 0, 1 };
+    [SerializeField] private GameObject calcIdentifier;
 
     void Awake()
     {
@@ -145,28 +148,47 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (!controller.calcMode) //Link Mode
         {
-            controller.populateInformation(skillId, currLevel, imageStates[0]);
-            if (!nodeActive)
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
-                controller.setAsActive(true, locId);
+                controller.populateInformation(skillId, currLevel, imageStates[0]);
+                if (!nodeActive)
+                {
+                    controller.setAsActive(true, locId);
+                }
+                else if (nodeActive && isUnlocked())
+                {
+                    changeSkillLevel(1);
+                }
             }
-            else if (nodeActive && isUnlocked())
+            else if (eventData.button == PointerEventData.InputButton.Right)
             {
-                changeSkillLevel(1);
+                if (nodeActive && isUnlocked())
+                {
+                    changeSkillLevel(-1);
+                }
             }
         }
-        else if (eventData.button == PointerEventData.InputButton.Right)
+        else //Free Calculator Mode
         {
-            if (nodeActive && isUnlocked())
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
-                changeSkillLevel(-1);
+                if (skillId <= 10000)
+                {
+                    calcInclude = true;
+                    toggleCalcGraphic(true, false);
+                }
+                // show calc Include graphic
             }
+            else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                calcInclude = false;
+                toggleCalcGraphic(false, false);
+                //hide calcInclude Graphic
+            }
+            controller.populateTotals();
         }
-        //Debug.Log(eventData.button);
-        //Debug.Log(eventData);
-        //throw new System.NotImplementedException();
     }
 
     public int getLocId()
@@ -307,5 +329,34 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     public List<int> getLightCondition()
     {
         return lightLevelRequirement;
+    }
+
+    public void toggleLockGraphic(bool toggle)
+    {
+        lockObject.SetActive(toggle);
+    }
+
+    public void toggleCalcGraphic(bool state, bool checkState) 
+    {
+        if (checkState)
+        {
+            calcIdentifier.SetActive(calcInclude);
+            //Conditional if calc graphic will show check status of includeCalc
+        }
+        else
+        {
+            calcIdentifier.SetActive(state);
+            //make calc graphic all go to state's state.
+        }
+    }
+
+    public bool isPartOfCalc()
+    {
+        return calcInclude;
+    }
+
+    public List<int> calcLv()
+    {
+        return calcRange;
     }
 }

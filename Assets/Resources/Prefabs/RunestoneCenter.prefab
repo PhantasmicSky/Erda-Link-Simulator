@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1243222460148546313, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1804507271040873199, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -119,6 +123,14 @@ PrefabInstance:
     - target: {fileID: 3861802295499007118, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: lightLevel.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498239174192421694, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498239174192421694, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 4632082369134793392, guid: 9eb3bd614e9a7264b84bf28892d10048, type: 3}
       propertyPath: m_LocalPosition.x

@@ -10,7 +10,8 @@ public class SkillController : MonoBehaviour
     public Dictionary<string, RunestoneFunctionality> skills = new Dictionary<string, RunestoneFunctionality> { };
     public TextAsset skillInformationJSON;
     public Dictionary<string, SkillInfo> skillInformation;
-    private List<string> checkOrder = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000", "rs1001", "rs1002", "rs1003", "rs1004", "rs1005" };
+    private List<string> checkOrder = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000"};
+    private List<string> checkOrderFull = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000", "rs1001", "rs1002", "rs1003", "rs1004", "rs1005" };
     private List<string> lightAffectedNodes = new List<string> { "rs15", "rs16", "rs215", "rs415", "rs416", "rs417", "rs615", "rs616" };
     [SerializeField] TextMeshProUGUI uiSkillName, uiSkillDescription, uiLevels, uiSECost, uiSEFCost;
     [SerializeField] Image skillIcon;
@@ -34,6 +35,19 @@ public class SkillController : MonoBehaviour
     [SerializeField] private List<string> stoneTypeTxt = new List<string> {"Rush Stone", "Rush Stone (End)", "Boost Stone", "Skill Stone", "Ultimate Stone", "Origin Stone"};
     [SerializeField] private List<string> stoneTypeCC = new List<string> { "#339944", "#1166CC", "#DD2133", "#EE8822", "#C52197", "#9D46CC" };
     public bool showTooltip = true;
+    public bool calcMode = false;
+    public List<Color32> bgModeColorsL = new List<Color32>
+    {
+        new Color32(70,70,128,255), //Link Mode Color
+        new Color32(21,22,37, 255), //Link Mode BG Color
+        new Color32(128,70,128,255), //Calc Mode Color
+        new Color32(37,21,37,255), //Calc Mode BG Color
+
+    };
+    [SerializeField] private Button modeButton;
+    [SerializeField] private TextMeshProUGUI modeText;
+    [SerializeField] private Image modeBG;
+
     private Dictionary<string, string> statName = new Dictionary<string, string>
     {
         { "int","INT" },
@@ -469,27 +483,50 @@ public class SkillController : MonoBehaviour
         skillIcon.sprite = sIcon;
         //stoneType.sprite = stoneTypeImg[skillInformation[$"rid{skillId}"].nodeType];
         stoneTypeTextOut.text = $"<color={stoneTypeCC[skillInformation[$"rid{skillId}"].nodeType]}>{stoneTypeTxt[skillInformation[$"rid{skillId}"].nodeType]}</color>";
+        populateTotals();
+    }
+
+    public void populateTotals()
+    {
         computeTotalSpent();
         uiTotSE.text = $"{runningTotalSE}";
         uiTotSEF.text = $"{runningTotalSEF}";
-
-        updateSummary();
+        updateSummary(); ;
     }
 
     private void computeTotalSpent()
     {
         runningTotalSE = 0;
         runningTotalSEF = 0;
-        foreach (KeyValuePair<string, RunestoneFunctionality> item in skills)
+        if (!calcMode)
         {
-            int _tempSkillId = item.Value.getSkillId();
-            int _tempLevel = item.Value.getSkillLevel();
-            if (_tempLevel > 0)
+            foreach (KeyValuePair<string, RunestoneFunctionality> item in skills)
             {
-                for (int i = 0; i < _tempLevel; i++)
+                int _tempSkillId = item.Value.getSkillId();
+                int _tempLevel = item.Value.getSkillLevel();
+                if (_tempLevel > 0)
                 {
-                    runningTotalSE += skillInformation[$"rid{_tempSkillId}"].solErdaCost[i];
-                    runningTotalSEF += skillInformation[$"rid{_tempSkillId}"].solErdaFragCost[i];
+                    for (int i = 0; i < _tempLevel; i++)
+                    {
+                        runningTotalSE += skillInformation[$"rid{_tempSkillId}"].solErdaCost[i];
+                        runningTotalSEF += skillInformation[$"rid{_tempSkillId}"].solErdaFragCost[i];
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach (KeyValuePair<string, RunestoneFunctionality> item in skills)
+            {
+                if (item.Value.isPartOfCalc())
+                {
+                    int _tempSkillId = item.Value.getSkillId();
+                    List<int> calRange = item.Value.calcLv();
+                    for (int i = calRange[0]; i < calRange[1]; i++)
+                    {
+                        runningTotalSE += skillInformation[$"rid{_tempSkillId}"].solErdaCost[i];
+                        runningTotalSEF += skillInformation[$"rid{_tempSkillId}"].solErdaFragCost[i];
+                    }
                 }
             }
         }
@@ -576,6 +613,64 @@ public class SkillController : MonoBehaviour
     public void toggleTooltip(bool state)
     {
         showTooltip = state;
+    }
+
+    public void swapMode()
+    {
+        if (calcMode)
+        {
+            modeText.text = "Link Mode";
+            ColorBlock cb = modeButton.colors;
+            cb.normalColor = bgModeColorsL[0];
+            cb.selectedColor = bgModeColorsL[0];
+            modeButton.colors = cb;
+            modeBG.color = bgModeColorsL[1];
+        }
+        else
+        {
+            modeText.text = "Free Calc Mode";
+            ColorBlock cb = modeButton.colors;
+            cb.normalColor = bgModeColorsL[2];
+            cb.selectedColor = bgModeColorsL[2];
+            modeButton.colors = cb;
+            modeBG.color = bgModeColorsL[3];
+        }
+        calcMode = !calcMode;
+        swapLockGraphic();
+        populateTotals();
+    }
+
+    private void swapLockGraphic()
+    {
+        foreach(string item in checkOrder)
+        {
+            if (calcMode)
+            {
+                skills[$"{item}"].toggleLockGraphic(false);
+                skills[$"{item}"].toggleCalcGraphic(true, true);
+            }
+            else
+            {
+                skills[$"{item}"].toggleLockGraphic(!skills[$"{item}"].isUnlocked());
+                skills[$"{item}"].toggleCalcGraphic(false, false);
+            }
+
+        }
+        foreach (string item in lightAffectedNodes)
+        {
+            if (calcMode)
+            {
+                skills[$"{item}"].toggleLockGraphic(false);
+                skills[$"{item}"].toggleCalcGraphic(true, true);
+            }
+            else
+            {
+                skills[$"{item}"].toggleLockGraphic(!skills[$"{item}"].isUnlocked());
+                skills[$"{item}"].toggleCalcGraphic(false, false);
+            }
+
+        }
+
     }
 
 }
