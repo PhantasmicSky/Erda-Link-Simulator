@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using System.Data.Common;
+using UnityEngine.UI;
 
 public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
@@ -35,6 +36,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     [SerializeField] private bool calcInclude;
     [SerializeField] private List<int> calcRange = new List<int> { 0, 1 };
     [SerializeField] private GameObject calcIdentifier;
+    [SerializeField] private TextMeshPro calcText;
 
     void Awake()
     {
@@ -277,6 +279,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         controller.lockCheck(); //LOCK CHECK HERE
         controller.computeLight();
         controller.lightCheck();
+        controller.populateTotals();
     }
 
     public void setAsActive(bool active)
@@ -336,7 +339,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         lockObject.SetActive(toggle);
     }
 
-    public void toggleCalcGraphic(bool state, bool checkState) 
+    public void toggleCalcGraphic(bool state, bool checkState)
     {
         if (checkState)
         {
@@ -358,5 +361,23 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     public List<int> calcLv()
     {
         return calcRange;
+    }
+
+    public void changeCalcRange(int lower, int higher)
+    {
+        calcRange[0] = lower;
+        calcRange[1] = higher;
+        calcText.text = $"{lower} > {higher}";
+        controller.populateTotals();
+    }
+
+    public Sprite getPhoto()
+    {
+        return imageStates[0];
+    }
+
+    public int getMaxLevel()
+    {
+        return maxLevel;
     }
 }

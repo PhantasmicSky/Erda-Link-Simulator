@@ -3071,6 +3071,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &299197587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 299197588}
+  - component: {fileID: 299197590}
+  - component: {fileID: 299197589}
+  m_Layer: 5
+  m_Name: Calc Mode Cover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &299197588
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299197587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2100489419}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 248}
+  m_SizeDelta: {x: 300, y: 424}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &299197589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299197587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.16470589, g: 0.058823522, b: 0.16470589, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &299197590
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299197587}
+  m_CullTransparentMesh: 1
 --- !u!1001 &314302560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5230,7 +5305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 286, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &515894298
@@ -6527,46 +6602,31 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'How to Use:
-
-
-    Hold Right Click and drag to move the board (Don''t
-    move too far I didn''t set any bounds)
-
-
-    Use the scroll wheel to zoom in
-    or out of the board
-
-
-    Click on a node to set it to active. Once active, the
-    ring around the node will glow the same color as the node type and the node''s
-    information will be displayed to the right.
-
-
-    If you left click on a currently
-    active node that is also unlocked, the node''s level will go up.
-
-
-    If you
-    right click on a currently active node that is also unlocked, the node''s level
-    will go down.
-
-
-
-    Known Issue:
-
-    Setting an early node back to Lv.0 (Unlocked
-    but not activated) while having a very far node activated might cause the very
-    far node to remain active even though it shouldn''t as the prerequisite nodes
-    haven''t  been activated. I honestly don''t know how best to check this. I am
-    just bad at programming those Q_Q.
-
-
-
-
-    Cheers,
-
-    StellarisSky'
+  m_text: "<b>How to Use</b>\n\n\t- Hold Right Click and drag to move the board (Don't
+    move too far I didn't set any bounds)\n\t- Use the scroll wheel to zoom in or
+    out of the board\n\nThe Simulator has 2 modes, <b>Link Mode</b> and <b>Free Calc
+    Mode</b>. Press the \"Link Mode\" or \"Free Calc Mode\" button on the top right
+    to switch modes.\n\n<b>Link Mode</b>\n\t- Acts just like the one in game except
+    that you can remove nodes you have invested erda in.\n\t- Click on a node to
+    set it to active. Once active, the ring around the node will glow the same color
+    as the node type and the node's information will be displayed to the right.\n
+    \t- If you left click on a currently active node that is also unlocked, the node's
+    level will go up.\n\t- If you right click on a currently active node that is
+    also unlocked, the node's level will go down.\n\n<b>Known Issue in Link Mode</b>\n\t-
+    Setting an early node back to Lv.0 while having a very far node activated/leveled
+    might cause the very far node to remain active even though it shouldn't as the
+    prerequisite nodes haven't been activated. I honestly don't know how best to
+    check this. I am just bad at programming those Q_Q.\n\n<b>Free Calc Mode</b>\n\t-
+    All nodes can be selected regardless if the prerequisite nodes are locked. This
+    is for people who just need to know how much erda they would need.\n\t- A single
+    left click (there is no active state) will include the node in the computation
+    [Indicated by a yellow bar below the icon].\n\t- A single right click removes
+    the node from computation [Yellow bar disappears]\n\t- If a node has a max level
+    greater than 1, you can click the yellow bar and set the starting and ending
+    level you would want to consider the cost for. (ex. You just want to get the
+    cost to get Sol Janus from Lv. 17 to Lv. 24). The yellow bar contains the current
+    level considerations for the node. (ex. seeing a \"2 > 7\" means that only the
+    cost to get from Lv.2 to Lv.7 is considered)\n\n\nCheers,\nStellarisSky"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6593,7 +6653,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.6
+  m_fontSize: 24.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6631,7 +6691,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 50, y: 100, z: 50, w: 50}
+  m_margin: {x: 25, y: 15, z: 25, w: 15}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7008,7 +7068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &642231804
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8027,6 +8087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1e3e3094960614ba613ed994112254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charName: Sia
   skillInformationJSON: {fileID: 4900000, guid: a4b9b3316761e854a9b8d33add9221be, type: 3}
   uiSkillName: {fileID: 1597627469}
   uiSkillDescription: {fileID: 455705712}
@@ -8077,6 +8138,7 @@ MonoBehaviour:
   modeButton: {fileID: 660815926}
   modeText: {fileID: 1942534987}
   modeBG: {fileID: 2100489420}
+  calcModeBlocker: {fileID: 299197587}
 --- !u!114 &769057293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9630,7 +9692,7 @@ GameObject:
   - component: {fileID: 896581649}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9649,6 +9711,7 @@ RectTransform:
   m_Children:
   - {fileID: 2100489419}
   - {fileID: 642231804}
+  - {fileID: 1816379150}
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -18924,6 +18987,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4544356979357723593, guid: 7d95d1ea34219dd4881b0e692c75f3d7, type: 3}
   m_PrefabInstance: {fileID: 1805596942}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1816379150 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+  m_PrefabInstance: {fileID: 7803108107990334032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1833150470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21160,6 +21228,7 @@ RectTransform:
   - {fileID: 913893603}
   - {fileID: 909280357}
   - {fileID: 660815923}
+  - {fileID: 299197588}
   m_Father: {fileID: 896581645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
@@ -22178,6 +22247,107 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ac4fad496f655d241a1cb371fdb32fea, type: 3}
+--- !u!1001 &7803108107990334032
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 896581645}
+    m_Modifications:
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80430837176446050, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 473081380134302821, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_Name
+      value: Change Calc Levels
+      objectReference: {fileID: 0}
+    - target: {fileID: 473081380134302821, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc91e84db4f6b6a40b481d3a5e8fe0ca, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

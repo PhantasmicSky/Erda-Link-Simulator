@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SkillController : MonoBehaviour
 {
+    [SerializeField] private string charName;
     public Dictionary<string, RunestoneFunctionality> skills = new Dictionary<string, RunestoneFunctionality> { };
     public TextAsset skillInformationJSON;
     public Dictionary<string, SkillInfo> skillInformation;
@@ -105,7 +106,7 @@ public class SkillController : MonoBehaviour
         {"siaM1",0},
         {"siaO1",0}
     };
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private GameObject calcModeBlocker;
 
     private void Awake()
     {
@@ -491,7 +492,7 @@ public class SkillController : MonoBehaviour
         computeTotalSpent();
         uiTotSE.text = $"{runningTotalSE}";
         uiTotSEF.text = $"{runningTotalSEF}";
-        updateSummary(); ;
+        updateSummary();
     }
 
     private void computeTotalSpent()
@@ -561,52 +562,119 @@ public class SkillController : MonoBehaviour
             {"siaM1",0},
             {"siaO1",0}
         };
-        foreach (KeyValuePair<string, RunestoneFunctionality> item in skills)
+
+        if (!calcMode)
         {
-            if (skills[item.Key].isUnlocked() && skills[item.Key].getSkillLevel()> 0)
+            foreach (KeyValuePair<string, RunestoneFunctionality> item in skills)
             {
-                if (skillInformation[$"rid{skills[item.Key].getSkillId()}"].nodeType <= 2)
+                if (skills[item.Key].isUnlocked() && skills[item.Key].getSkillLevel() > 0)
                 {
-                    statNumber[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectValue;
+                    if (skillInformation[$"rid{skills[item.Key].getSkillId()}"].nodeType <= 2)
+                    {
+                        statNumber[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectValue;
+                    }
+                    else if (skills[item.Key].getSkillId() <= 10000)
+                    {
+                        statNumber[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skills[item.Key].getSkillLevel();
+                    }
                 }
-                else if (skills[item.Key].getSkillId() <= 10000)
+            }
+            string finale = "";
+            foreach (KeyValuePair<string, string> header in statName)
+            {
+                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaO1" && header.Key != "fom" && header.Key != "fdt")
                 {
-                    statNumber[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skills[item.Key].getSkillLevel();
+                    if (statNumber[header.Key] > 0)
+                    {
+                        if (header.Key == "str" || header.Key == "dex" || header.Key == "int" || header.Key == "luk" || header.Key == "atk" || header.Key == "matk" || header.Key == "sac")
+                        {
+                            finale += $"{header.Value}:\t+{statNumber[header.Key]}\n";
+                        }
+                        else
+                        {
+                            finale += $"{header.Value}:\t+{statNumber[header.Key]}%\n";
+                        }
+                    }
                 }
+                else if (header.Key == "fom" || header.Key == "fdt")
+                {
+                    if (statNumber[header.Key] > 0)
+                    {
+                        finale += $"{header.Value}\n";
+                    }
+                }
+                else
+                {
+                    if (statNumber[header.Key] > 0)
+                    {
+                        finale += $"{header.Value}:\tLv.{statNumber[header.Key]}\n";
+                    }
+                }
+                summary.text = finale;
             }
         }
-        string finale = "";
-        foreach (KeyValuePair<string, string> header in statName)
+        else
         {
-            if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaO1" && header.Key != "fom" && header.Key != "fdt")
+            Dictionary<string, int> pastVal = new Dictionary<string, int>
             {
-                if (statNumber[header.Key] > 0)
+                {"janus",0},
+                {"sirius",0},
+                {"shine",0},
+                {"sadal",0},
+                {"savior",0},
+                {"fom",0},
+                {"fdt",0},
+                {"siaM1",0},
+                {"siaO1",0}
+            };
+            foreach (KeyValuePair<string, RunestoneFunctionality> item in skills)
+            {
+                if (skills[item.Key].isPartOfCalc())
                 {
-                    if (header.Key == "str" || header.Key == "dex" || header.Key == "int" || header.Key == "luk" || header.Key == "atk" || header.Key == "matk" || header.Key == "sac")
+                    if (skillInformation[$"rid{skills[item.Key].getSkillId()}"].nodeType <= 2)
                     {
-                        finale += $"{header.Value}:\t+{statNumber[header.Key]}\n";
+                        statNumber[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectValue;
                     }
-                    else
+                    else if (skills[item.Key].getSkillId() <= 10000)
                     {
-                        finale += $"{header.Value}:\t+{statNumber[header.Key]}%\n";
+                        statNumber[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skills[item.Key].calcLv()[1];
+                        pastVal[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skills[item.Key].calcLv()[0];
                     }
                 }
             }
-            else if (header.Key == "fom" || header.Key == "fdt")
+            string finale = "";
+            foreach (KeyValuePair<string, string> header in statName)
             {
-                if (statNumber[header.Key] > 0)
+                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaO1" && header.Key != "fom" && header.Key != "fdt")
                 {
-                    finale += $"{header.Value}\n";
+                    if (statNumber[header.Key] > 0)
+                    {
+                        if (header.Key == "str" || header.Key == "dex" || header.Key == "int" || header.Key == "luk" || header.Key == "atk" || header.Key == "matk" || header.Key == "sac")
+                        {
+                            finale += $"{header.Value}:\t+{statNumber[header.Key]}\n";
+                        }
+                        else
+                        {
+                            finale += $"{header.Value}:\t+{statNumber[header.Key]}%\n";
+                        }
+                    }
                 }
-            }
-            else
-            {
-                if (statNumber[header.Key] > 0)
+                else if (header.Key == "fom" || header.Key == "fdt")
                 {
-                    finale += $"{header.Value}:\tLv.{statNumber[header.Key]}\n";
+                    if (statNumber[header.Key] > 0)
+                    {
+                        finale += $"{header.Value}\n";
+                    }
                 }
+                else
+                {
+                    if (statNumber[header.Key] > 0)
+                    {
+                        finale += $"{header.Value}:\tLv.{pastVal[header.Key]} > Lv.{statNumber[header.Key]}\n";
+                    }
+                }
+                summary.text = finale;
             }
-            summary.text = finale;
         }
     }
 
@@ -625,6 +693,7 @@ public class SkillController : MonoBehaviour
             cb.selectedColor = bgModeColorsL[0];
             modeButton.colors = cb;
             modeBG.color = bgModeColorsL[1];
+            calcModeBlocker.SetActive(false);
         }
         else
         {
@@ -634,10 +703,12 @@ public class SkillController : MonoBehaviour
             cb.selectedColor = bgModeColorsL[2];
             modeButton.colors = cb;
             modeBG.color = bgModeColorsL[3];
+            calcModeBlocker.SetActive(true);
         }
         calcMode = !calcMode;
         swapLockGraphic();
         populateTotals();
+        updateSummary();
     }
 
     private void swapLockGraphic()
