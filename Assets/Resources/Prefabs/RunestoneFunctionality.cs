@@ -163,6 +163,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
                 {
                     changeSkillLevel(1);
                 }
+                controller.populateInformation(skillId, currLevel, imageStates[0]);
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
@@ -170,6 +171,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
                 {
                     changeSkillLevel(-1);
                 }
+                controller.populateInformation(skillId, currLevel, imageStates[0]);
             }
         }
         else //Free Calculator Mode

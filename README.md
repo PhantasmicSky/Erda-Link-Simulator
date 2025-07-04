@@ -3,6 +3,9 @@
 
 This is the Unity Project File of the Erda Link Simulator found [here](https://phantasmicsky.github.io/Erda-Link-WebGL-Build/).
 
+## Bugfix
+* \[2025-07-05\] Fixed an issue where deleveling a node does not update the Cost to Upgrade. 
+
 ## Features
 * Allows users to simulate filling up their Erda Link board
 * Allows users to calculate how many Sol Erdas and Sol Erda Fragments they would need to finish a chosen selection
