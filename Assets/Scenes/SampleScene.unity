@@ -6614,13 +6614,13 @@ MonoBehaviour:
     stone's level will go up.\n\t- If you right click on a currently active stone
     that is also unlocked, the stone's level will go down.\n\n<b>Known Issue in Link
     Mode</b>\n\t- Setting an early stone back to Lv.0 while having a very far stone
-    activated/leveled might cause the very far stonee to remain active even though
-    it shouldn't as the prerequisite stones haven't been activated. I honestly don't
+    activated/leveled might cause the very far stones to remain active even though
+    it shouldn't, as the prerequisite stones haven't been activated. I honestly don't
     know how best to check this. I am just bad at programming those Q_Q.\n\n<b>Free
     Calc Mode</b>\n\t- All stones can be selected regardless if the prerequisite
     stones are locked. This is for people who just need to know how much erda they
     would need.\n\t- A single left click (there is no active state) will include
-    the stonee in the computation [Indicated by a yellow bar below the icon].\n\t-
+    the stone in the computation [Indicated by a yellow bar below the icon].\n\t-
     A single right click removes the stone from the computation [Yellow bar disappears]\n\t-
     If a stone has a max level greater than 1, you can click the yellow bar and set
     the starting and ending level you would want to consider the cost for. (ex. You
@@ -12093,7 +12093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3066074675189957119, guid: 0c11fb74cfacfa64cab01e008c9473ba, type: 3}
       propertyPath: nodeType
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3066074675189957119, guid: 0c11fb74cfacfa64cab01e008c9473ba, type: 3}
       propertyPath: imageStates.Array.size
@@ -12102,15 +12102,15 @@ PrefabInstance:
     - target: {fileID: 3066074675189957119, guid: 0c11fb74cfacfa64cab01e008c9473ba, type: 3}
       propertyPath: 'imageStates.Array.data[0]'
       value: 
-      objectReference: {fileID: 5055061500908916416, guid: 18360826a02a4564ca87e248aebd18c9, type: 3}
+      objectReference: {fileID: -5188852317185294639, guid: 52d63d0693550344bb089054b49e3334, type: 3}
     - target: {fileID: 3066074675189957119, guid: 0c11fb74cfacfa64cab01e008c9473ba, type: 3}
       propertyPath: 'imageStates.Array.data[1]'
       value: 
-      objectReference: {fileID: -3468135095816552461, guid: 78c127d56c280ae40a2c4c2f4912d4d1, type: 3}
+      objectReference: {fileID: -5188852317185294639, guid: ec3d07a52cbff8340a45d9c1ec7392d9, type: 3}
     - target: {fileID: 3066074675189957119, guid: 0c11fb74cfacfa64cab01e008c9473ba, type: 3}
       propertyPath: 'imageStates.Array.data[2]'
       value: 
-      objectReference: {fileID: 5424050544430474428, guid: f6e6f372b59baca4c89847a0b3f5fd1c, type: 3}
+      objectReference: {fileID: -5188852317185294639, guid: 0fad20510104e9049b664568dc699866, type: 3}
     - target: {fileID: 3066074675189957119, guid: 0c11fb74cfacfa64cab01e008c9473ba, type: 3}
       propertyPath: andUnlockCondition.Array.size
       value: 0

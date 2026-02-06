@@ -11,7 +11,7 @@ public class SkillController : MonoBehaviour
     public Dictionary<string, RunestoneFunctionality> skills = new Dictionary<string, RunestoneFunctionality> { };
     public TextAsset skillInformationJSON;
     public Dictionary<string, SkillInfo> skillInformation;
-    private List<string> checkOrder = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000"};
+    private List<string> checkOrder = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000", "rs1001"};
     private List<string> checkOrderFull = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000", "rs1001", "rs1002", "rs1003", "rs1004", "rs1005" };
     private List<string> lightAffectedNodes = new List<string> { "rs15", "rs16", "rs215", "rs415", "rs416", "rs417", "rs615", "rs616" };
     [SerializeField] TextMeshProUGUI uiSkillName, uiSkillDescription, uiLevels, uiSECost, uiSEFCost;
@@ -75,7 +75,8 @@ public class SkillController : MonoBehaviour
         {"fom","Fruits of Mastery"},
         {"fdt","Fragment of Distorted Time"},
         {"siaM1","SHINE Ray/Antares"},
-        {"siaO1","Celestial Design"}
+        {"siaO1","Celestial Design"},
+        {"siaA","Starlit Cosmos"}
     };
 
     private Dictionary<string, int> statNumber = new Dictionary<string, int>
@@ -104,7 +105,8 @@ public class SkillController : MonoBehaviour
         {"fom",0},
         {"fdt",0},
         {"siaM1",0},
-        {"siaO1",0}
+        {"siaO1",0},
+        {"siaA",0}
     };
     [SerializeField] private GameObject calcModeBlocker;
 
@@ -186,7 +188,7 @@ public class SkillController : MonoBehaviour
                         lockFlag = true;
                     }
                 }
-                if (key == "rs1001" || key == "rs1002" || key == "rs1003" || key == "rs1004" || key == "rs1005")
+                if (key == "rs1002" || key == "rs1003" || key == "rs1004" || key == "rs1005")
                 {
                     lockFlag = true;
                 }
@@ -243,7 +245,7 @@ public class SkillController : MonoBehaviour
                         lockFlag = true;
                     }
                 }
-                if (key == "rs1001" || key == "rs1002" || key == "rs1003" || key == "rs1004" || key == "rs1005")
+                if (key == "rs1002" || key == "rs1003" || key == "rs1004" || key == "rs1005")
                 {
                     lockFlag = true;
                 }
@@ -560,7 +562,8 @@ public class SkillController : MonoBehaviour
             {"fom",0},
             {"fdt",0},
             {"siaM1",0},
-            {"siaO1",0}
+            {"siaO1",0},
+            {"siaA",0}
         };
 
         if (!calcMode)
@@ -573,7 +576,7 @@ public class SkillController : MonoBehaviour
                     {
                         statNumber[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectValue;
                     }
-                    else if (skills[item.Key].getSkillId() <= 10000)
+                    else if (skills[item.Key].getSkillId() <= 10001)
                     {
                         statNumber[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skills[item.Key].getSkillLevel();
                     }
@@ -582,7 +585,7 @@ public class SkillController : MonoBehaviour
             string finale = "";
             foreach (KeyValuePair<string, string> header in statName)
             {
-                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaO1" && header.Key != "fom" && header.Key != "fdt")
+                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaO1" && header.Key != "siaA" && header.Key != "fom" && header.Key != "fdt")
                 {
                     if (statNumber[header.Key] > 0)
                     {
@@ -625,7 +628,8 @@ public class SkillController : MonoBehaviour
                 {"fom",0},
                 {"fdt",0},
                 {"siaM1",0},
-                {"siaO1",0}
+                {"siaO1",0},
+                {"siaA",0}
             };
             foreach (KeyValuePair<string, RunestoneFunctionality> item in skills)
             {
@@ -635,7 +639,7 @@ public class SkillController : MonoBehaviour
                     {
                         statNumber[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectValue;
                     }
-                    else if (skills[item.Key].getSkillId() <= 10000)
+                    else if (skills[item.Key].getSkillId() <= 10001)
                     {
                         statNumber[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skills[item.Key].calcLv()[1];
                         pastVal[skillInformation[$"rid{skills[item.Key].getSkillId()}"].effectStr] += skills[item.Key].calcLv()[0];
@@ -645,7 +649,7 @@ public class SkillController : MonoBehaviour
             string finale = "";
             foreach (KeyValuePair<string, string> header in statName)
             {
-                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaO1" && header.Key != "fom" && header.Key != "fdt")
+                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaO1" && header.Key != "siaA" && header.Key != "fom" && header.Key != "fdt")
                 {
                     if (statNumber[header.Key] > 0)
                     {

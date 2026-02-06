@@ -947,15 +947,16 @@
         "effectStr":"siaO1"
 	},
     "rid10001":{
-        "solErdaCost":[5,1,1,1,1,1,1,1,1,10,3,4,5,5,5,5,5,5,5,15,5,5,5,6,6,6,6,7,8,20],
-        "solErdaFragCost":[100,30,30,40,40,50,55,60,60,200,80,100,110,120,130,135,140,145,150,350,170,180,190,200,210,220,230,240,250,500],
+        "solErdaCost":[5,1,1,1,2,2,2,2,3,10,3,3,4,4,4,4,4,4,5,15,5,5,5,5,5,6,6,6,7,20],
+        "solErdaFragCost":[100,30,35,40,45,50,55,60,65,200,80,90,100,110,120,130,140,150,160,350,170,180,190,200,210,220,230,240,250,500],
         "mesoCost":[],
-        "skillName":"-NONE-",
-        "skillDescription":"-NONE-",
+        "skillName":"Starlit Cosmos",
+        "skillDescription":"Draw upon the light of blooming star flowers to awaken a newborn star.",
         "maxLevel":"30",
         "numberChange1":[],
         "numberChange2":[],
-        "nodeType":"5"
+        "nodeType":"5",
+        "effectStr":"siaA"
 	},
     "rid10002":{
         "solErdaCost":[5,1,1,1,1,1,1,1,1,10,3,4,5,5,5,5,5,5,5,15,5,5,5,6,6,6,6,7,8,20],

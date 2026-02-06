@@ -12,7 +12,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     [SerializeField] private int locId;
     [SerializeField] private List<int> unlocks;
     [SerializeField] private List<int> requires;
-    [SerializeField] private int nodeType; // 0 = Green 1 = Blue 2 = Red 3 = Orange 4 = Purple 5 = Center
+    [SerializeField] private int nodeType; // 0 = Green 1 = Blue 2 = Red 3 = Orange 4 = Purple 5 = Center 6 = Locked Center
     [SerializeField] private List<Sprite> imageStates; //Active, Inactive, Hover
     [SerializeField] private GameObject skillPhoto;
     [SerializeField] private GameObject skillLevel;
@@ -48,12 +48,12 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (nodeType > 2 && nodeType != 5)
+        if (nodeType > 2 && nodeType != 5 && nodeType != 6)
         {
             skillPhoto.transform.localPosition = new Vector3(skillLocationX, skillLocationY, 0);
             skillLevel.GetComponent<TextMeshPro>().text = formatVisualLevel(currLevel);
         }
-        else if (nodeType == 5)
+        else if (nodeType == 5 || nodeType == 6)
         {
             skillLevel.GetComponent<TextMeshPro>().text = formatVisualLevel(currLevel);
         }
@@ -73,7 +73,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         {
             skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[0];
         }
-        if (locId > 1000)
+        if (locId > 1001)
         {
             setLock(true);
             skillLevel.SetActive(false);
@@ -108,7 +108,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         //Show Tooltip
         if (controller.showTooltip)
         {
-            if (nodeType != 3 && nodeType != 4 && nodeType != 5 && skillId != 300 && skillId != 304)
+            if (nodeType != 3 && nodeType != 4 && nodeType != 5 && nodeType != 6 && skillId != 300 && skillId != 304)
             {
                 tooltipText.text = controller.skillInformation[$"rid{skillId}"].skillDescription;
             }
@@ -116,7 +116,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
             {
                 tooltipText.text = controller.skillInformation[$"rid{skillId}"].skillName;
             }
-            if (nodeType != 5)
+            if (nodeType != 5 && nodeType != 6)
             {
                 tooltipText.GetComponent<RectTransform>().localPosition = new Vector3(0.32f, 0.1f, 0);
             }
@@ -178,7 +178,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                if (skillId <= 10000)
+                if (skillId <= 10001)
                 {
                     calcInclude = true;
                     toggleCalcGraphic(true, false);
