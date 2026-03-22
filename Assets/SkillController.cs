@@ -13,7 +13,7 @@ public class SkillController : MonoBehaviour
     public Dictionary<string, SkillInfo> skillInformation;
     private List<string> checkOrder = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000", "rs1001"};
     private List<string> checkOrderFull = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000", "rs1001", "rs1002", "rs1003", "rs1004", "rs1005" };
-    private List<string> lightAffectedNodes = new List<string> { "rs15", "rs16", "rs215", "rs415", "rs416", "rs417", "rs615", "rs616" };
+    private List<string> lightAffectedNodes = new List<string> { "rs15", "rs16", "rs215", "rs216", "rs415", "rs416", "rs417", "rs615", "rs616" };
     [SerializeField] TextMeshProUGUI uiSkillName, uiSkillDescription, uiLevels, uiSECost, uiSEFCost;
     [SerializeField] Image skillIcon;
     [SerializeField] Image stoneType;
@@ -75,6 +75,7 @@ public class SkillController : MonoBehaviour
         {"fom","Fruits of Mastery"},
         {"fdt","Fragment of Distorted Time"},
         {"siaM1","SHINE Ray/Antares"},
+        {"siaM2","SHINE Boom/Algol/Formalhaut"},
         {"siaO1","Celestial Design"},
         {"siaA","Starlit Cosmos"}
     };
@@ -105,6 +106,7 @@ public class SkillController : MonoBehaviour
         {"fom",0},
         {"fdt",0},
         {"siaM1",0},
+        {"siaM2",0},
         {"siaO1",0},
         {"siaA",0}
     };
@@ -562,6 +564,7 @@ public class SkillController : MonoBehaviour
             {"fom",0},
             {"fdt",0},
             {"siaM1",0},
+            {"siaM2",0},
             {"siaO1",0},
             {"siaA",0}
         };
@@ -585,7 +588,7 @@ public class SkillController : MonoBehaviour
             string finale = "";
             foreach (KeyValuePair<string, string> header in statName)
             {
-                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaO1" && header.Key != "siaA" && header.Key != "fom" && header.Key != "fdt")
+                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaM2" && header.Key != "siaO1" && header.Key != "siaA" && header.Key != "fom" && header.Key != "fdt")
                 {
                     if (statNumber[header.Key] > 0)
                     {
@@ -628,6 +631,7 @@ public class SkillController : MonoBehaviour
                 {"fom",0},
                 {"fdt",0},
                 {"siaM1",0},
+                {"siaM2",0},
                 {"siaO1",0},
                 {"siaA",0}
             };
@@ -649,7 +653,7 @@ public class SkillController : MonoBehaviour
             string finale = "";
             foreach (KeyValuePair<string, string> header in statName)
             {
-                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaO1" && header.Key != "siaA" && header.Key != "fom" && header.Key != "fdt")
+                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaM2" && header.Key != "siaO1" && header.Key != "siaA" && header.Key != "fom" && header.Key != "fdt")
                 {
                     if (statNumber[header.Key] > 0)
                     {

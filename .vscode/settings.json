@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Erda-Link-Simulator.sln"
+    "dotnet.defaultSolution": "Erda-Link-Simulator.slnx"
 }
