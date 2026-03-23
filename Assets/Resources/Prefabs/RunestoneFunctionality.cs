@@ -37,6 +37,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     [SerializeField] private List<int> calcRange = new List<int> { 0, 1 };
     [SerializeField] private GameObject calcIdentifier;
     [SerializeField] private TextMeshPro calcText;
+    [SerializeField] private bool firstRun = true;
 
     void Awake()
     {
@@ -78,6 +79,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
             setLock(true);
             skillLevel.SetActive(false);
         }
+        pulseTooltip();
     }
 
     private string formatVisualLevel(int level)
@@ -108,7 +110,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         //Show Tooltip
         if (controller.showTooltip)
         {
-            if (nodeType != 3 && nodeType != 4 && nodeType != 5 && nodeType != 6 && skillId != 300 && skillId != 304)
+            /*if (nodeType != 3 && nodeType != 4 && nodeType != 5 && nodeType != 6 && skillId != 300 && skillId != 304)
             {
                 tooltipText.text = controller.skillInformation[$"rid{skillId}"].skillDescription;
             }
@@ -123,10 +125,10 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
             else
             {
                 tooltipText.GetComponent<RectTransform>().localPosition = new Vector3(0.21f, -0.512f, 0);
-            }
+            }*/
             tooltipText.enabled = true;
             tooltipBG.gameObject.SetActive(true);
-            tooltipBG.localScale = new Vector3(tooltipText.preferredWidth, 0.16f, 1);
+            //tooltipBG.localScale = new Vector3(tooltipText.preferredWidth, 0.16f, 1);
         }
         //Debug.Log($"Hovering over {skillId} at location {locId}");
         //throw new System.NotImplementedException();
@@ -381,5 +383,34 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     public int getMaxLevel()
     {
         return maxLevel;
+    }
+
+    private void pulseTooltip()
+    {
+        if (nodeType != 3 && nodeType != 4 && nodeType != 5 && nodeType != 6 && skillId != 300 && skillId != 304)
+        {
+            tooltipText.text = controller.skillInformation[$"rid{skillId}"].skillDescription;
+        }
+        else
+        {
+            tooltipText.text = controller.skillInformation[$"rid{skillId}"].skillName;
+        }
+        if (nodeType != 5 && nodeType != 6)
+        {
+            tooltipText.GetComponent<RectTransform>().localPosition = new Vector3(0.32f, 0.1f, 0);
+        }
+        else
+        {
+            tooltipText.GetComponent<RectTransform>().localPosition = new Vector3(0.21f, -0.512f, 0);
+        }
+        tooltipText.enabled = true;
+        tooltipBG.gameObject.SetActive(true);
+        tooltipBG.localScale = new Vector3(tooltipText.preferredWidth, 0.16f, 1);
+    }
+
+    public void pulseTooltipEnd()
+    {
+        tooltipText.enabled = false;
+        tooltipBG.gameObject.SetActive(false);
     }
 }
