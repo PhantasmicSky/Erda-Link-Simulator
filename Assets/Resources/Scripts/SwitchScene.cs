@@ -3,8 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class SwitchScene : MonoBehaviour
 {
-    public void SceneSwitch(string sceneName)
+    public void SceneSwitch(int classId)
     {
-        SceneManager.LoadScene(sceneName);
+        selectionClass.classSelection = classId;
+        SceneManager.LoadScene("Board");
     }
 }

@@ -23,7 +23,7 @@ public class PathFunctionality : MonoBehaviour
 
     public void drawPath(bool draw)
     {
-            spr.enabled = draw;
+        spr.enabled = draw;
     }
 
 }

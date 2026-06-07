@@ -728,6 +728,20 @@
         "effectValue":"1",
         "isPercent":true
 	},
+    "rid53":{
+        "mesoCost":[0],
+        "solErdaCost":[1],
+        "solErdaFragCost":[50],
+        "skillName":"EXP Obtained",
+        "skillDescription":"Increases EXP Obtained by 2%.",
+        "maxLevel":"1",
+        "numberChange1":[],
+        "numberChange2":[],
+        "nodeType":"0",
+        "effectStr":"exp",
+        "effectValue":"2",
+        "isPercent":true
+    },
     "rid100":{
         "mesoCost":[0],
         "solErdaCost":[7,2,2,2,3,3,3,5,5,14,5,5,6,6,6,6,6,6,7,17,7,7,7,7,7,9,9,9,10,20],
@@ -823,6 +837,30 @@
         "numberChange2":[],
         "nodeType":"3",
         "effectStr":"savior"
+	},
+    "rid108":{
+        "mesoCost":[0],
+        "solErdaCost":[7,2,2,2,3,3,3,5,5,14,5,5,6,6,6,6,6,6,7,17,7,7,7,7,7,9,9,9,10,20],
+        "solErdaFragCost":[125,38,44,50,57,63,69,75,82,300,110,124,138,152,165,179,193,207,220,525,234,248,262,275,289,303,317,330,344,750],
+        "skillName":"Sol Hecate",
+        "skillDescription":"Coalesce Sol Erda drawn to the Adversary's determination into a guardian spirit.",
+        "maxLevel":"30",
+        "numberChange1":[],
+        "numberChange2":[],
+        "nodeType":"3",
+        "effectStr":"hecate"
+	},
+    "rid109":{
+        "mesoCost":[0],
+        "solErdaCost":[7,2,2,2,3,3,3,5,5,14,5,5,6,6,6,6,6,6,7,17,7,7,7,7,7,9,9,9,10,20],
+        "solErdaFragCost":[125,38,44,50,57,63,69,75,82,300,110,124,138,152,165,179,193,207,220,525,234,248,262,275,289,303,317,330,344,750],
+        "skillName":"Sol Janus",
+        "skillDescription":"Draws the power of Sol Erda's origin in two forms.",
+        "maxLevel":"30",
+        "numberChange1":[],
+        "numberChange2":[],
+        "nodeType":"3",
+        "effectStr":"janus"
 	},
     "rid300":{
         "mesoCost":[],

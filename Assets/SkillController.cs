@@ -7,12 +7,12 @@ using UnityEngine.UI;
 
 public class SkillController : MonoBehaviour
 {
-    [SerializeField] private string charName;
+    //[SerializeField] private string charName;
     public Dictionary<string, RunestoneFunctionality> skills = new Dictionary<string, RunestoneFunctionality> { };
-    public TextAsset skillInformationJSON;
+    public List<TextAsset> skillInformationJSON;
     public Dictionary<string, SkillInfo> skillInformation;
-    private List<string> checkOrder = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000", "rs1001"};
-    private List<string> checkOrderFull = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000", "rs1001", "rs1002", "rs1003", "rs1004", "rs1005" };
+    private List<string> checkOrder = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000", "rs1001", "rs17", "rs617"};
+    private List<string> checkOrderFull = new List<string> { "rs0", "rs1", "rs2", "rs3", "rs4", "rs5", "rs6", "rs7", "rs8", "rs9", "rs10", "rs11", "rs12", "rs13", "rs14", "rs200", "rs201", "rs202", "rs203", "rs204", "rs205", "rs206", "rs207", "rs208", "rs209", "rs210", "rs211", "rs212", "rs213", "rs214", "rs400", "rs401", "rs402", "rs403", "rs404", "rs405", "rs406", "rs407", "rs408", "rs409", "rs410", "rs411", "rs412", "rs413", "rs414", "rs600", "rs601", "rs602", "rs603", "rs604", "rs605", "rs606", "rs607", "rs608", "rs609", "rs610", "rs611", "rs612", "rs613", "rs614", "rs1000", "rs1001", "rs1002", "rs1003", "rs1004", "rs1005", "rs17", "rs617"};
     private List<string> lightAffectedNodes = new List<string> { "rs15", "rs16", "rs215", "rs216", "rs415", "rs416", "rs417", "rs615", "rs616" };
     [SerializeField] TextMeshProUGUI uiSkillName, uiSkillDescription, uiLevels, uiSECost, uiSEFCost;
     [SerializeField] Image skillIcon;
@@ -51,9 +51,12 @@ public class SkillController : MonoBehaviour
 
     private Dictionary<string, string> statName = new Dictionary<string, string>
     {
+        { "str", "STR"},
+        { "dex", "DEX"},
         { "int","INT" },
         { "luk", "LUK" },
         { "astat", "All Stat" },
+        {"atk","Attack Power"},
         {"matk","Magic ATT"},
         { "dmg", "Damage" },
         { "critd","Critical Damage"},
@@ -65,9 +68,11 @@ public class SkillController : MonoBehaviour
         {"idr", "Drop Rate" },
         {"sac","Sacred Power"},
         { "buff","Buff Duration"},
+        {"cd", "Skill Cooldown"},
         {"smn","Summon Duration"},
         {"abn","Abnormal Status DMG"},
         {"janus","Sol Janus"},
+        {"hecate","Sol Hecate"},
         {"sirius","Sirius Boost"},
         {"shine","Shine Boost"},
         {"sadal","Sadalsuud Boost"},
@@ -77,14 +82,25 @@ public class SkillController : MonoBehaviour
         {"siaM1","SHINE Ray/Antares"},
         {"siaM2","SHINE Boom/Algol/Formalhaut"},
         {"siaO1","Celestial Design"},
-        {"siaA","Starlit Cosmos"}
+        {"siaA","Starlit Cosmos"},
+        {"elight", "Eternal Light"},
+        {"srise", "Sentinel Rise"},
+        {"eguard", "Eternal Guardian"},
+        {"dor", "Destruction of Roan"},
+        {"erelM1","SHINE Spear of Lugh"},
+        {"erelM2","SHINE Fury of Roan/SHINE Sting of Roan"},
+        {"erelO1","Fall of Melin"},
+        {"erelA","Radiant Spear"}
     };
 
     private Dictionary<string, int> statNumber = new Dictionary<string, int>
     {
+        {"str", 0},
+        {"dex", 0},
         { "int",0 },
         { "luk", 0 },
         { "astat", 0 },
+        {"atk",0},
         {"matk",0},
         { "dmg", 0 },
         { "critd",0},
@@ -96,10 +112,16 @@ public class SkillController : MonoBehaviour
         {"idr", 0},
         {"sac",0},
         { "buff",0},
+        {"cd", 0},
         {"smn",0},
         {"abn",0},
         {"janus",0},
+        {"hecate",0},
         {"sirius",0},
+        {"elight", 0},
+        {"srise", 0},
+        {"eguard", 0},
+        {"dor", 0},
         {"shine",0},
         {"sadal",0},
         {"savior",0},
@@ -108,14 +130,32 @@ public class SkillController : MonoBehaviour
         {"siaM1",0},
         {"siaM2",0},
         {"siaO1",0},
-        {"siaA",0}
+        {"siaA",0},
+        {"erelM1",0},
+        {"erelM2",0},
+        {"erelO1",0},
+        {"erelA",0}
     };
     [SerializeField] private GameObject calcModeBlocker;
 
     private void Awake()
     {
         //JsonConvert
-        skillInformation = JsonConvert.DeserializeObject<Dictionary<string, SkillInfo>>(skillInformationJSON.text);
+        try
+        {
+            if(selectionClass.classSelection == 18212)
+            {
+                skillInformation = JsonConvert.DeserializeObject<Dictionary<string, SkillInfo>>(skillInformationJSON[0].text);
+            }
+            else
+            {
+                skillInformation = JsonConvert.DeserializeObject<Dictionary<string, SkillInfo>>(skillInformationJSON[1].text);
+            }
+        }
+        catch
+        {
+            skillInformation = JsonConvert.DeserializeObject<Dictionary<string, SkillInfo>>(skillInformationJSON[0].text);
+        }
         //Debug.Log(skillInformation["rid1"].skillName);
     }
     void Start()
@@ -265,6 +305,7 @@ public class SkillController : MonoBehaviour
         }
         computeLight();
         lightCheck();
+        pc.pathCheck();
     }
 
     /*public void lockCheck()
@@ -379,8 +420,8 @@ public class SkillController : MonoBehaviour
 
     private void drawLight()
     {
-        float _newWidth = 3.18f + (0.9f * (currLightLevels[1] + currLightLevels[3]));
-        float _newHeight = 3.18f + (0.9f * (currLightLevels[0] + currLightLevels[2]));
+        float _newWidth = baseSize + (expansion * (currLightLevels[1] + currLightLevels[3]));
+        float _newHeight = baseSize + (expansion * (currLightLevels[0] + currLightLevels[2]));
         lightBoard.GetComponent<SpriteRenderer>().size = new UnityEngine.Vector2(_newWidth, _newHeight);
         //Compute New Center
         float newX = centerX;
@@ -540,9 +581,12 @@ public class SkillController : MonoBehaviour
     private void updateSummary()
     {
         statNumber = new Dictionary<string, int>{
+            {"str", 0},
+            {"dex", 0},
             { "int",0 },
             { "luk", 0 },
             { "astat", 0 },
+            {"atk",0},
             {"matk",0},
             { "dmg", 0 },
             { "critd",0},
@@ -554,10 +598,16 @@ public class SkillController : MonoBehaviour
             {"idr", 0},
             {"sac",0},
             { "buff",0},
+            {"cd", 0},
             {"smn",0},
             {"abn",0},
             {"janus",0},
+            {"hecate",0},
             {"sirius",0},
+            {"elight", 0},
+            {"srise", 0},
+            {"eguard", 0},
+            {"dor", 0},
             {"shine",0},
             {"sadal",0},
             {"savior",0},
@@ -566,7 +616,11 @@ public class SkillController : MonoBehaviour
             {"siaM1",0},
             {"siaM2",0},
             {"siaO1",0},
-            {"siaA",0}
+            {"siaA",0},
+            {"erelM1",0},
+            {"erelM2",0},
+            {"erelO1",0},
+            {"erelA",0}
         };
 
         if (!calcMode)
@@ -588,7 +642,7 @@ public class SkillController : MonoBehaviour
             string finale = "";
             foreach (KeyValuePair<string, string> header in statName)
             {
-                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaM2" && header.Key != "siaO1" && header.Key != "siaA" && header.Key != "fom" && header.Key != "fdt")
+                if (header.Key != "janus" && header.Key != "hecate" && header.Key != "sirius" && header.Key != "elight" && header.Key != "srise" && header.Key != "eguard" && header.Key != "dor" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaM2" && header.Key != "siaO1" && header.Key != "siaA" && header.Key != "erelM1" && header.Key != "erelM2" && header.Key != "erelO1" && header.Key != "erelA" && header.Key != "fom" && header.Key != "fdt")
                 {
                     if (statNumber[header.Key] > 0)
                     {
@@ -624,6 +678,7 @@ public class SkillController : MonoBehaviour
             Dictionary<string, int> pastVal = new Dictionary<string, int>
             {
                 {"janus",0},
+                {"hecate",0},
                 {"sirius",0},
                 {"shine",0},
                 {"sadal",0},
@@ -633,7 +688,15 @@ public class SkillController : MonoBehaviour
                 {"siaM1",0},
                 {"siaM2",0},
                 {"siaO1",0},
-                {"siaA",0}
+                {"siaA",0},
+                {"erelM1",0},
+                {"erelM2",0},
+                {"erelO1",0},
+                {"erelA",0},
+                {"elight", 0},
+                {"srise", 0},
+                {"eguard", 0},
+                {"dor", 0}
             };
             foreach (KeyValuePair<string, RunestoneFunctionality> item in skills)
             {
@@ -653,7 +716,7 @@ public class SkillController : MonoBehaviour
             string finale = "";
             foreach (KeyValuePair<string, string> header in statName)
             {
-                if (header.Key != "janus" && header.Key != "sirius" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaM2" && header.Key != "siaO1" && header.Key != "siaA" && header.Key != "fom" && header.Key != "fdt")
+                if (header.Key != "janus" && header.Key != "hecate" && header.Key != "sirius" && header.Key != "elight" && header.Key != "srise" && header.Key != "eguard" && header.Key != "dor" && header.Key != "shine" && header.Key != "sadal" && header.Key != "savior" && header.Key != "siaM1" && header.Key != "siaM2" && header.Key != "siaO1" && header.Key != "siaA" && header.Key != "erelM1" && header.Key != "erelM2" && header.Key != "erelO1" && header.Key != "erelA" && header.Key != "fom" && header.Key != "fdt")
                 {
                     if (statNumber[header.Key] > 0)
                     {

@@ -38,11 +38,16 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     [SerializeField] private GameObject calcIdentifier;
     [SerializeField] private TextMeshPro calcText;
     [SerializeField] private bool firstRun = true;
+    [SerializeField] private int offSet = 0;
 
     void Awake()
     {
         controller = GameObject.FindGameObjectWithTag("Main Control").GetComponent<SkillController>();
         controller.subscribeToController(this, $"rs{locId}");
+        if(selectionClass.classSelection == 18112)
+        {
+            offSet = 3;
+        }
 
     }
 
@@ -68,11 +73,11 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         }
         if (currLevel < 1)
         {
-            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[2];
+            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[2+offSet];
         }
         else if (currLevel > 0)
         {
-            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[0];
+            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[0+offSet];
         }
         if (locId > 1001)
         {
@@ -104,7 +109,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     {
         if (currLevel > 0)
         {
-            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[1];
+            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[1+offSet];
         }
 
         //Show Tooltip
@@ -138,7 +143,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
     {
         if (currLevel > 0)
         {
-            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[0];
+            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[0+offSet];
         }
 
         if (controller.showTooltip)
@@ -156,7 +161,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                controller.populateInformation(skillId, currLevel, imageStates[0]);
+                controller.populateInformation(skillId, currLevel, imageStates[0+offSet]);
                 if (!nodeActive)
                 {
                     controller.setAsActive(true, locId);
@@ -165,7 +170,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
                 {
                     changeSkillLevel(1);
                 }
-                controller.populateInformation(skillId, currLevel, imageStates[0]);
+                controller.populateInformation(skillId, currLevel, imageStates[0+offSet]);
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
@@ -173,7 +178,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
                 {
                     changeSkillLevel(-1);
                 }
-                controller.populateInformation(skillId, currLevel, imageStates[0]);
+                controller.populateInformation(skillId, currLevel, imageStates[0+offSet]);
             }
         }
         else //Free Calculator Mode
@@ -269,11 +274,11 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
         //Change Photo
         if (currLevel > 0)
         {
-            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[1];
+            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[1+offSet];
         }
         else
         {
-            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[2];
+            skillPhoto.GetComponent<SpriteRenderer>().sprite = imageStates[2+offSet];
         }
         //Update Text
         if (nodeType > 2)
@@ -377,7 +382,7 @@ public class RunestoneFunctionality : MonoBehaviour, IPointerEnterHandler, IPoin
 
     public Sprite getPhoto()
     {
-        return imageStates[0];
+        return imageStates[0+offSet];
     }
 
     public int getMaxLevel()
